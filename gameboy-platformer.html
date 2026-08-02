@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Pixel Quest — Retro Handheld Platformer</title>
+<meta name="description" content="Pixel Quest is a free browser platformer styled after a classic monochrome handheld console. Jump platforms, collect coins, stomp enemies, and race to the flag.">
+<meta name="keywords" content="pixel quest, retro platformer, game boy style game, browser game, pixel art game, 8-bit platformer, free online game">
+<meta name="author" content="Naroboy_fun">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#9bbc0f">
+<link rel="canonical" href="https://naroboy.fun/">
+
+<!-- Favicon (pixel-art handheld console icon) -->
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABKElEQVR4nGNgGGDAiE3wxIl9/2lhmYWFE4Z9GAIbNiz7LyEhQQv7GV68eMHAwMDAEBAQBbeXCd1yuOKIXJo4Ah0w4ZKQWDF5YB1AL8CCS+Lw4UdUtcjWVo40BzAwMDAIGOZTxfIP5yfilBu8UUAumLpMEc7OjrpPUD3VQ+D+NcKWIgOqhwADA3E+hwGiQqCkBoJpAYZGIlTUUiQpWEkBVA+BnhYaOIBWvmdgIBAF+EowmjsAV9lNbTDguWDAHUBUNgwLS4CzV61aQLzpCXMg9IIUnEpoFwIwy9HZaABvCCD7HF2MpJDAA6gbAglzsAc7XaIAW5AvSMFrOQMDgSiABTPZiZAIQL0QIDLI0QFR2ZBoX5NgMQzQvSBC7pbR3QEBAVGMyN2/QQEAWYtKDdn+bCkAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAADbUlEQVR4nO3cIYtUURiA4Vmxr3GTYLXZLJvNFhHLGiwiosFgMBoMBkXEYliLiMVs9gfYrIJpo/9Ao+DOwFzmzt677zxPHGbnnvDywT3n6N7+9f0/C4i4MPUCYEyCJkXQpAiaFEGTcvGsH/j11ZezfiQTuvH45pk+z4QmRdCkCJoUQZOyt82j7w9P35367ODgYFuPY4ZOTk7W/u7Ri/sbP8+EJkXQpAiaFEGTImhSRjn6XrabMdTJ7YenPjv49Gbj32W3mNCkCJoUQZMiaFIETcqZX/BfxY4GYzChSRE0KYImRdCkCJoUQZMiaFIETYqgSRE0KbM5+v727dfUS2ADh4eXp17CYrEwoYkRNCmCJkXQpMzmpXCZS9ceTb0Elvj9/fXUS1jJhCZF0KQImhRBkyJoUgRNiqBJETQpgiZF0KQImpRZ3+VgPW8/Xtno7x/c+TnSSqZnQpMiaFIETYqgSfFSGPDzx+mXuitXN3tRPK9MaFIETYqgSRE0KYImxS5HVOk4ewgTmhRBkyJoUgRNiqBJSe1yPHm2/ndfPt/eOpiOCU2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoElJHX0v+6f7u3rRfVeZ0KQImhRBkyJoUlIvhbvK3e5/TGhSBE2KoEkRNCmCJiW1y+GYGxOaFEGTImhSBE2KoEmZ9S7H7++vp14C54wJTYqgSRE0KYImZTYvhYeHl6deAgEmNCmCJkXQpAiaFEGTImhSBE2KoEkRNCmCJkXQpAiaFEGTImhSBE2KoEmZzQX/Mdy6dXfj3/j8+Xjj3zh37r4f9v3je9tZxwhMaFIETYqgSRE0KYImJbXLwRqG7mis+xsz2fkwoUkRNCmCJkXQpMz6pXCMo+xtPnMnj8lnzoQmRdCkCJoUQZMiaFJmvcvBf4YcW686il72uQv+ME+CJkXQpAiaFEGTYpdjjrZ1CX+xWL5DMeNdi6FMaFIETYqgSRE0KbN+KRx6gd7/bYcJTYqgSRE0KYImRdCkzHqXY2etOooe44J/nAlNiqBJETQpgiZF0KSkdjny9zB2dOdiCBOaFEGTImhSBE1K6qWQ8+Poxf2t/K4JTYqgSRE0KYImRdCk2OVgq1btZnx4+m7t7w5hQpMiaFIETYqgSdnbv77/Z+pFwFhMaFIETYqgSRE0KYIm5S9WNVGEKXMpBwAAAABJRU5ErkJggg==">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pixel Quest — Retro Handheld Platformer">
+<meta property="og:description" content="A free browser platformer styled after a classic monochrome handheld console. Jump, collect coins, stomp enemies, and reach the flag.">
+<meta property="og:image" content="https://naroboy.fun/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://naroboy.fun/">
+<meta property="og:site_name" content="Pixel Quest">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Naroboy_fun">
+<meta name="twitter:creator" content="@Naroboy_fun">
+<meta name="twitter:title" content="Pixel Quest — Retro Handheld Platformer">
+<meta name="twitter:description" content="A free browser platformer styled after a classic monochrome handheld console. Jump, collect coins, stomp enemies, and reach the flag.">
+<meta name="twitter:image" content="https://naroboy.fun/og-image.png">
+
+<style>
+  @font-face {
+    font-family: 'PixelFont';
+    src: local('Courier New');
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #0f1508;
+    font-family: 'Courier New', monospace;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    touch-action: none;
+  }
+  #device {
+    background: linear-gradient(160deg, #d6d6ce, #b8b8ae);
+    border-radius: 18px 18px 60px 18px;
+    padding: 22px 20px 30px 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 2px 3px rgba(255,255,255,0.5);
+    width: min(94vw, 420px);
+  }
+  #brand-row {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 10px; padding: 0 4px;
+  }
+  #battery {
+    width: 9px; height: 9px; border-radius: 50%; background: #b0202b;
+    box-shadow: 0 0 4px #e64858;
+  }
+  #brand-text {
+    font-size: 10px; letter-spacing: 1px; color: #3a4a8a; font-weight: bold; font-style: italic;
+  }
+  #screen-frame {
+    background: #8b8ba0;
+    border-radius: 6px;
+    padding: 14px 16px 18px 16px;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  #screen-labels {
+    display: flex; justify-content: space-between; font-size: 6px; color: #d63a6a;
+    padding: 0 4px 4px 4px; letter-spacing: 0.5px;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 160 / 144;
+    background: #9bbc0f;
+    image-rendering: pixelated;
+    border-radius: 2px;
+  }
+  #title-row {
+    text-align: center; margin: 14px 0 6px 0;
+  }
+  #title-row .gb {
+    color: #2c3a7a; font-weight: bold; font-size: 15px; font-style: italic; letter-spacing: 0.5px;
+  }
+  #title-row .tm { font-size: 8px; vertical-align: super; }
+  #controls {
+    display: flex; justify-content: space-between; align-items: center; margin-top: 18px; padding: 0 6px;
+  }
+  #dpad {
+    position: relative; width: 96px; height: 96px;
+  }
+  .dbtn {
+    position: absolute; background: #2a2a2a; border-radius: 3px;
+    box-shadow: 0 2px 0 #000, inset 0 1px 1px rgba(255,255,255,0.15);
+  }
+  #d-up { left: 32px; top: 0; width: 32px; height: 32px; border-radius: 5px 5px 0 0; }
+  #d-down { left: 32px; top: 64px; width: 32px; height: 32px; border-radius: 0 0 5px 5px; }
+  #d-left { left: 0; top: 32px; width: 32px; height: 32px; border-radius: 5px 0 0 5px; }
+  #d-right { left: 64px; top: 32px; width: 32px; height: 32px; border-radius: 0 5px 5px 0; }
+  .dbtn:active, .dbtn.active { background: #444; }
+  #abtns {
+    display: flex; gap: 14px; transform: rotate(-20deg);
+  }
+  .abtn {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #e0466e, #a4184a);
+    box-shadow: 0 3px 0 #6e0e30, inset 0 1px 2px rgba(255,255,255,0.3);
+    color: #6e0e30; font-weight: bold; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 10px;
+  }
+  #abtns .abtn:first-child { margin-top: 22px; }
+  .abtn:active, .abtn.active { filter: brightness(0.85); transform: translateY(1px); }
+  #startselect {
+    display: flex; justify-content: center; gap: 22px; margin-top: 16px;
+  }
+  .ssbtn {
+    width: 40px; height: 12px; border-radius: 8px;
+    background: #5a5a68; transform: rotate(-20deg);
+    box-shadow: 0 2px 0 #333;
+    font-size: 6px; color: #ddd; display: flex; align-items: center; justify-content: center;
+    letter-spacing: 0.5px;
+  }
+  #speaker {
+    display: flex; gap: 4px; margin-top: 16px; justify-content: flex-end; padding-right: 10px;
+    transform: rotate(-25deg);
+  }
+  .sline { width: 22px; height: 3px; background: #8b8ba0; border-radius: 2px; }
+  #hint {
+    text-align: center; color: #6a7a3a; font-size: 9px; margin-top: 10px; letter-spacing: 0.5px;
+  }
+  #credit {
+    text-align: center; color: #8a9a5a; font-size: 8px; margin-top: 6px; letter-spacing: 0.5px;
+  }
+  #credit a {
+    color: #4a5a9a; text-decoration: none; font-weight: bold;
+  }
+  #credit a:hover, #credit a:active {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<div id="device">
+  <div id="brand-row">
+    <div id="battery"></div>
+    <div id="brand-text">DOT MATRIX WITH STEREO SOUND</div>
+  </div>
+
+  <div id="screen-frame">
+    <canvas id="game" width="160" height="144"></canvas>
+    <div id="screen-labels"><span>BATTERY</span><span></span></div>
+  </div>
+
+  <div id="title-row">
+    <span class="gb">Nintendo PIXEL QUEST</span><span class="tm">™</span>
+  </div>
+
+  <div id="controls">
+    <div id="dpad">
+      <div class="dbtn" id="d-up"></div>
+      <div class="dbtn" id="d-down"></div>
+      <div class="dbtn" id="d-left"></div>
+      <div class="dbtn" id="d-right"></div>
+    </div>
+    <div id="abtns">
+      <div class="abtn" id="btn-a">A</div>
+      <div class="abtn" id="btn-b">B</div>
+    </div>
+  </div>
+
+  <div id="startselect">
+    <div class="ssbtn" id="btn-select">SELECT</div>
+    <div class="ssbtn" id="btn-start">START</div>
+  </div>
+
+  <div id="speaker">
+    <div class="sline"></div><div class="sline"></div><div class="sline"></div>
+  </div>
+
+  <div id="hint">Arrows/WASD move · A / Space / ↑ = jump · R = restart</div>
+  <div id="credit">Built by <a href="https://x.com/Naroboy_fun" target="_blank" rel="noopener noreferrer">@Naroboy_fun</a></div>
+</div>
+
+<script>
+(() => {
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+
+// Game Boy 4-shade palette
+const PAL = {
+  darkest: '#0f380f',
+  dark: '#306230',
+  light: '#8bac0f',
+  lightest: '#9bbc0f'
+};
+
+const W = 160, H = 144;
+const GRAVITY = 0.32;
+const JUMP_V = -5.4;
+const MOVE_SPEED = 1.35;
+const FRICTION = 0.82;
+
+// Level definition (tile-based, extends right). Each unit = 8px.
+// 'level' is built procedurally: ground with gaps, platforms, coins, enemies, flag at end.
+const TILE = 8;
+const levelWidthTiles = 220;
+const groundY = 16; // tile row where ground starts
+
+let platforms = []; // {x,y,w,h} in px (world coords)
+let coins = [];
+let enemies = [];
+let spikes = [];
+let flag = null;
+
+function buildLevel() {
+  platforms = [];
+  coins = [];
+  enemies = [];
+  spikes = [];
+
+  // Ground with a few gaps
+  let gapZones = [[28,31],[55,58],[90,93],[130,134],[170,173]];
+  for (let t = 0; t < levelWidthTiles; t++) {
+    let inGap = gapZones.some(([a,b]) => t >= a && t <= b);
+    if (!inGap) {
+      platforms.push({x: t*TILE, y: groundY*TILE, w: TILE, h: (30-groundY)*TILE});
+    }
+  }
+
+  // Floating platforms + coins
+  const floatSpots = [
+    {x: 10, y: 11, w: 4}, {x: 20, y: 9, w: 3},
+    {x: 38, y: 12, w: 4}, {x: 46, y: 8, w: 3},
+    {x: 63, y: 11, w: 5}, {x: 72, y: 7, w: 3},
+    {x: 82, y: 12, w: 4}, {x: 100, y: 10, w: 4},
+    {x: 110, y: 13, w: 3}, {x: 120, y: 9, w: 4},
+    {x: 140, y: 12, w: 4}, {x: 150, y: 8, w: 3},
+    {x: 160, y: 11, w: 4}, {x: 180, y: 10, w: 5},
+    {x: 195, y: 13, w: 4}
+  ];
+  floatSpots.forEach(s => {
+    platforms.push({x: s.x*TILE, y: s.y*TILE, w: s.w*TILE, h: TILE});
+    coins.push({x: (s.x + s.w/2)*TILE - 3, y: (s.y-2)*TILE, taken: false});
+  });
+
+  // extra ground coins
+  [5, 15, 25, 43, 60, 78, 96, 115, 145, 165, 185, 205].forEach(t => {
+    coins.push({x: t*TILE, y: (groundY-2)*TILE, taken: false});
+  });
+
+  // Enemies (patrol on ground segments)
+  enemies.push({x: 40*TILE, y: (groundY-1)*TILE, w: 8, h: 8, minX: 36*TILE, maxX: 50*TILE, dir: 1, speed: 0.4, alive: true});
+  enemies.push({x: 68*TILE, y: (groundY-1)*TILE, w: 8, h: 8, minX: 62*TILE, maxX: 80*TILE, dir: 1, speed: 0.5, alive: true});
+  enemies.push({x: 105*TILE, y: (groundY-1)*TILE, w: 8, h: 8, minX: 96*TILE, maxX: 118*TILE, dir: -1, speed: 0.5, alive: true});
+  enemies.push({x: 155*TILE, y: (groundY-1)*TILE, w: 8, h: 8, minX: 145*TILE, maxX: 168*TILE, dir: 1, speed: 0.6, alive: true});
+  enemies.push({x: 190*TILE, y: (groundY-1)*TILE, w: 8, h: 8, minX: 178*TILE, maxX: 210*TILE, dir: -1, speed: 0.6, alive: true});
+
+  // Spikes near some gaps edges (visual danger zones on floating platform edges)
+  spikes.push({x: 120*TILE, y: (10-1)*TILE, w: 8, h: 8});
+  spikes.push({x: 150*TILE+16, y: (8-1)*TILE, w: 8, h: 8});
+
+  flag = {x: (levelWidthTiles-4)*TILE, y: (groundY-6)*TILE, w: 8, h: 48};
+}
+buildLevel();
+
+let player, camX, score, lives, gameState, startTime, elapsed;
+
+// --- Sound Effects (8-bit chiptune style via Web Audio API) ---
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+function beep(freq, duration, type, startDelay, vol) {
+  try {
+    const ctxA = getAudioCtx();
+    const t0 = ctxA.currentTime + (startDelay || 0);
+    const osc = ctxA.createOscillator();
+    const gain = ctxA.createGain();
+    osc.type = type || 'square';
+    osc.frequency.setValueAtTime(freq, t0);
+    gain.gain.setValueAtTime((vol !== undefined ? vol : 0.12), t0);
+    gain.gain.exponentialRampToValueAtTime(0.001, t0 + duration);
+    osc.connect(gain);
+    gain.connect(ctxA.destination);
+    osc.start(t0);
+    osc.stop(t0 + duration);
+  } catch (e) { /* audio not available, fail silently */ }
+}
+
+function sweep(freqStart, freqEnd, duration, type, startDelay, vol) {
+  try {
+    const ctxA = getAudioCtx();
+    const t0 = ctxA.currentTime + (startDelay || 0);
+    const osc = ctxA.createOscillator();
+    const gain = ctxA.createGain();
+    osc.type = type || 'square';
+    osc.frequency.setValueAtTime(freqStart, t0);
+    osc.frequency.exponentialRampToValueAtTime(Math.max(freqEnd,1), t0 + duration);
+    gain.gain.setValueAtTime((vol !== undefined ? vol : 0.12), t0);
+    gain.gain.exponentialRampToValueAtTime(0.001, t0 + duration);
+    osc.connect(gain);
+    gain.connect(ctxA.destination);
+    osc.start(t0);
+    osc.stop(t0 + duration);
+  } catch (e) {}
+}
+
+const SFX = {
+  jump: () => sweep(300, 620, 0.14, 'square'),
+  coin: () => { beep(988, 0.07, 'square'); beep(1568, 0.12, 'square', 0.07); },
+  stomp: () => sweep(500, 120, 0.12, 'square'),
+  hurt: () => { sweep(200, 80, 0.25, 'sawtooth'); },
+  loseLife: () => { beep(220, 0.1,'square'); beep(180,0.1,'square',0.11); beep(140,0.18,'square',0.22); },
+  select: () => beep(880, 0.05, 'square'),
+  start: () => { beep(660, 0.06, 'square'); beep(880, 0.08, 'square', 0.07); },
+  win: () => {
+    const notes = [523,659,784,1047,784,1047];
+    notes.forEach((f,i) => beep(f, 0.16, 'square', i*0.13, 0.1));
+  },
+  gameover: () => {
+    const notes = [392,349,330,294,262];
+    notes.forEach((f,i) => beep(f, 0.22, 'triangle', i*0.16, 0.12));
+  }
+};
+
+// unlock audio on first user gesture (mobile autoplay policies)
+window.addEventListener('pointerdown', () => getAudioCtx(), {once:true});
+window.addEventListener('keydown', () => getAudioCtx(), {once:true});
+
+function resetPlayer() {
+  player = {
+    x: 16, y: 100, w: 7, h: 8,
+    vx: 0, vy: 0, onGround: false, facing: 1,
+    animT: 0, dead: false, invuln: 0
+  };
+  camX = 0;
+}
+
+function initGame() {
+  buildLevel();
+  resetPlayer();
+  score = 0;
+  lives = 3;
+  gameState = 'playing'; // playing, dead, win, gameover
+  startTime = performance.now();
+}
+initGame();
+
+// Input
+const keys = {};
+window.addEventListener('keydown', e => {
+  keys[e.key.toLowerCase()] = true;
+  if (['arrowup','arrowdown','arrowleft','arrowright',' '].includes(e.key.toLowerCase())) e.preventDefault();
+  if (e.key.toLowerCase() === 'r') initGame();
+  if ((e.key === ' ' || e.key === 'ArrowUp' || e.key.toLowerCase()==='w') && (gameState==='dead'||gameState==='win'||gameState==='gameover')) {
+    initGame();
+  }
+});
+window.addEventListener('keyup', e => keys[e.key.toLowerCase()] = false);
+
+function bindTouch(el, onDown, onUp) {
+  let active = false;
+  const down = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (active) return;
+    active = true;
+    el.classList.add('active');
+    onDown();
+    if (el.setPointerCapture && e.pointerId !== undefined) {
+      try { el.setPointerCapture(e.pointerId); } catch (err) {}
+    }
+  };
+  const up = (e) => {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    if (!active) return;
+    active = false;
+    el.classList.remove('active');
+    onUp && onUp();
+  };
+  // Pointer events unify mouse, touch, and pen in one path,
+  // avoiding the double-firing / stuck-button issue from mixing
+  // separate touch + mouse listeners.
+  el.addEventListener('pointerdown', down, {passive:false});
+  el.addEventListener('pointerup', up, {passive:false});
+  el.addEventListener('pointercancel', up, {passive:false});
+  el.addEventListener('pointerleave', up, {passive:false});
+  // Fallback for browsers without Pointer Events
+  el.addEventListener('touchstart', down, {passive:false});
+  el.addEventListener('touchend', up, {passive:false});
+  el.addEventListener('touchcancel', up, {passive:false});
+  el.style.touchAction = 'none';
+}
+bindTouch(document.getElementById('d-left'), () => keys['arrowleft']=true, () => keys['arrowleft']=false);
+bindTouch(document.getElementById('d-right'), () => keys['arrowright']=true, () => keys['arrowright']=false);
+bindTouch(document.getElementById('d-up'), () => keys[' ']=true, () => keys[' ']=false);
+bindTouch(document.getElementById('btn-a'), () => keys[' ']=true, () => keys[' ']=false);
+bindTouch(document.getElementById('btn-b'), () => keys[' ']=true, () => keys[' ']=false);
+bindTouch(document.getElementById('btn-start'), () => { SFX.start(); if (gameState!=='playing') initGame(); });
+bindTouch(document.getElementById('btn-select'), () => { SFX.select(); initGame(); });
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+function rectsOverlap(a, b) {
+  return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+}
+
+function update() {
+  if (gameState !== 'playing') return;
+
+  // horizontal input
+  if (keys['arrowleft'] || keys['a']) { player.vx -= MOVE_SPEED * 0.28; player.facing = -1; }
+  if (keys['arrowright'] || keys['d']) { player.vx += MOVE_SPEED * 0.28; player.facing = 1; }
+  player.vx *= FRICTION;
+  if (Math.abs(player.vx) < 0.05) player.vx = 0;
+  player.vx = Math.max(-MOVE_SPEED, Math.min(MOVE_SPEED, player.vx));
+
+  // jump
+  if ((keys['arrowup'] || keys['w'] || keys[' ']) && player.onGround) {
+    player.vy = JUMP_V;
+    player.onGround = false;
+    SFX.jump();
+  }
+
+  // gravity
+  player.vy += GRAVITY;
+  if (player.vy > 6) player.vy = 6;
+
+  // move X, resolve collisions
+  player.x += player.vx;
+  for (const p of platforms) {
+    if (rectsOverlap(player, p)) {
+      if (player.vx > 0) player.x = p.x - player.w;
+      else if (player.vx < 0) player.x = p.x + p.w;
+      player.vx = 0;
+    }
+  }
+
+  // move Y, resolve collisions
+  player.onGround = false;
+  player.y += player.vy;
+  for (const p of platforms) {
+    if (rectsOverlap(player, p)) {
+      if (player.vy > 0) {
+        player.y = p.y - player.h;
+        player.vy = 0;
+        player.onGround = true;
+      } else if (player.vy < 0) {
+        player.y = p.y + p.h;
+        player.vy = 0;
+      }
+    }
+  }
+
+  // fell into pit
+  if (player.y > H + 40) {
+    loseLife();
+  }
+
+  // coins
+  for (const c of coins) {
+    if (!c.taken && rectsOverlap(player, {x:c.x,y:c.y,w:8,h:8})) {
+      c.taken = true;
+      score += 10;
+      SFX.coin();
+    }
+  }
+
+  // spikes
+  if (player.invuln <= 0) {
+    for (const s of spikes) {
+      if (rectsOverlap(player, s)) { SFX.hurt(); loseLife(); break; }
+    }
+  }
+
+  // enemies
+  for (const en of enemies) {
+    if (!en.alive) continue;
+    en.x += en.dir * en.speed;
+    if (en.x < en.minX || en.x > en.maxX) en.dir *= -1;
+
+    if (rectsOverlap(player, en)) {
+      // stomp check: player falling and above enemy
+      if (player.vy > 0 && (player.y + player.h) - en.y < 6) {
+        en.alive = false;
+        player.vy = JUMP_V * 0.6;
+        score += 30;
+        SFX.stomp();
+      } else if (player.invuln <= 0) {
+        SFX.hurt();
+        loseLife();
+      }
+    }
+  }
+  if (player.invuln > 0) player.invuln--;
+
+  // flag / win
+  if (flag && rectsOverlap(player, flag)) {
+    gameState = 'win';
+    elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
+    SFX.win();
+  }
+
+  // camera follow
+  camX = player.x - W/2 + 4;
+  camX = Math.max(0, Math.min(camX, levelWidthTiles*TILE - W));
+
+  player.animT += Math.abs(player.vx) > 0.1 ? 1 : 0;
+}
+
+function loseLife() {
+  lives--;
+  if (lives <= 0) {
+    gameState = 'gameover';
+    SFX.gameover();
+  } else {
+    SFX.loseLife();
+    resetPlayer();
+  }
+}
+
+// --- Drawing ---
+function drawPixelRect(x, y, w, h, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(Math.round(x), Math.round(y), w, h);
+}
+
+function drawPlayer() {
+  const px = player.x - camX;
+  const py = player.y;
+  const bob = player.onGround && Math.abs(player.vx) > 0.1 ? (Math.floor(player.animT/6)%2===0 ? 0 : 1) : 0;
+
+  // simple pixel hero: body block + head + limb hint
+  drawPixelRect(px, py + 1 - bob, 7, 5, PAL.darkest); // body
+  drawPixelRect(px + (player.facing>0?4:0), py - 1 - bob, 3, 3, PAL.darkest); // head bump
+  drawPixelRect(px + 1, py + 6 - bob, 2, 2, PAL.dark); // leg
+  drawPixelRect(px + 4, py + 6 - bob, 2, 2, PAL.dark); // leg
+  if (player.invuln > 0 && Math.floor(player.invuln/4)%2===0) {
+    // flicker
+  }
+}
+
+function drawEnemy(en) {
+  if (!en.alive) return;
+  const ex = en.x - camX;
+  drawPixelRect(ex, en.y, 8, 6, PAL.darkest);
+  drawPixelRect(ex+1, en.y+6, 2, 2, PAL.darkest);
+  drawPixelRect(ex+5, en.y+6, 2, 2, PAL.darkest);
+  drawPixelRect(ex+1, en.y+2, 1, 1, PAL.lightest);
+  drawPixelRect(ex+5, en.y+2, 1, 1, PAL.lightest);
+}
+
+function drawCoin(c) {
+  if (c.taken) return;
+  const cx = c.x - camX;
+  if (cx < -8 || cx > W+8) return;
+  const bob = Math.sin(performance.now()/200 + c.x) * 1;
+  drawPixelRect(cx+2, c.y+bob, 4, 4, PAL.darkest);
+  drawPixelRect(cx+3, c.y+1+bob, 2, 2, PAL.dark);
+}
+
+function drawBackgroundDecor() {
+  // simple clouds/hills using dark shade blocks, parallax
+  ctx.globalAlpha = 1;
+  for (let i = 0; i < 8; i++) {
+    let bx = (i * 60 - camX * 0.3) % (W + 60);
+    if (bx < -30) bx += (W+60);
+    drawPixelRect(bx, 20 + (i%3)*4, 16, 6, PAL.light);
+  }
+  // ground texture line
+}
+
+function draw() {
+  ctx.fillStyle = PAL.lightest;
+  ctx.fillRect(0, 0, W, H);
+
+  drawBackgroundDecor();
+
+  // platforms
+  for (const p of platforms) {
+    const x = p.x - camX;
+    if (x + p.w < 0 || x > W) continue;
+    drawPixelRect(x, p.y, p.w, Math.min(p.h, H - p.y), PAL.dark);
+    drawPixelRect(x, p.y, p.w, 2, PAL.darkest);
+  }
+
+  // spikes
+  for (const s of spikes) {
+    const x = s.x - camX;
+    if (x < -8 || x > W) continue;
+    ctx.fillStyle = PAL.darkest;
+    ctx.beginPath();
+    ctx.moveTo(x, s.y+8);
+    ctx.lineTo(x+4, s.y);
+    ctx.lineTo(x+8, s.y+8);
+    ctx.fill();
+  }
+
+  // coins
+  for (const c of coins) drawCoin(c);
+
+  // enemies
+  for (const en of enemies) drawEnemy(en);
+
+  // flag
+  if (flag) {
+    const fx = flag.x - camX;
+    if (fx > -8 && fx < W + 8) {
+      drawPixelRect(fx, flag.y, 2, flag.h, PAL.darkest);
+      drawPixelRect(fx+2, flag.y, 10, 8, PAL.dark);
+    }
+  }
+
+  // player
+  if (gameState === 'playing' || gameState === 'dead') drawPlayer();
+
+  // HUD
+  ctx.fillStyle = PAL.darkest;
+  ctx.font = '8px monospace';
+  ctx.fillText('SCORE ' + String(score).padStart(4,'0'), 4, 10);
+  ctx.fillText('x' + lives, W - 22, 10);
+
+  if (gameState === 'win') {
+    overlay('YOU WIN!', ['Level complete', 'Score: ' + score, 'Time: ' + elapsed + 's', '', 'START = play again']);
+  } else if (gameState === 'gameover') {
+    overlay('GAME OVER', ['Final score: ' + score, '', 'START = try again']);
+  }
+}
+
+function overlay(title, lines) {
+  ctx.fillStyle = 'rgba(15,56,15,0.85)';
+  ctx.fillRect(10, 40, W-20, 64);
+  ctx.strokeStyle = PAL.lightest;
+  ctx.strokeRect(10, 40, W-20, 64);
+  ctx.fillStyle = PAL.lightest;
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText(title, W/2, 56);
+  ctx.font = '7px monospace';
+  lines.forEach((l, i) => ctx.fillText(l, W/2, 68 + i*9));
+  ctx.textAlign = 'left';
+}
+
+function loop() {
+  update();
+  draw();
+  requestAnimationFrame(loop);
+}
+loop();
+})();
+</script>
+</body>
+</html>
